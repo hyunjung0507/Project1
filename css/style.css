@@ -1815,60 +1815,161 @@ input {
   gap: 10px;
 }
 
+/* ── 유튜브 버튼 (기본부터 레드 배경) ── */
 .youtube-btn {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 13px 16px;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  padding: 14px 16px;
+  background: #FF0000;
+  border: none;
   border-radius: var(--radius);
-  color: var(--white);
+  color: #fff;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: all var(--transition);
   cursor: pointer;
+  box-shadow: 0 3px 10px rgba(255,0,0,0.25);
 }
 
 .youtube-btn:hover,
 .youtube-btn:active {
-  background: #ff0000;
-  border-color: #ff0000;
+  background: #cc0000;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255,0,0,0.3);
+  box-shadow: 0 5px 16px rgba(255,0,0,0.4);
 }
 
 .youtube-btn-icon {
   width: 36px;
   height: 36px;
-  background: #ff0000;
+  background: rgba(255,255,255,0.2);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 17px;
   flex-shrink: 0;
-  transition: background var(--transition);
-}
-
-.youtube-btn:hover .youtube-btn-icon,
-.youtube-btn:active .youtube-btn-icon {
-  background: rgba(255,255,255,0.2);
 }
 
 .youtube-btn-text {
   flex: 1;
   text-align: left;
+  letter-spacing: -0.2px;
 }
 
 .youtube-btn-arrow {
   font-size: 12px;
-  color: #666;
-  transition: color var(--transition);
+  color: rgba(255,255,255,0.75);
 }
 
-.youtube-btn:hover .youtube-btn-arrow {
-  color: white;
+/* 통합 가이드 버튼 — 진한 레드 강조 */
+.youtube-btn.youtube-btn-all {
+  background: #990000;
+  box-shadow: 0 3px 10px rgba(153,0,0,0.3);
+}
+
+.youtube-btn.youtube-btn-all:hover,
+.youtube-btn.youtube-btn-all:active {
+  background: #770000;
+  box-shadow: 0 5px 16px rgba(153,0,0,0.45);
+}
+
+/* ── 카카오톡 상담 섹션 ── */
+.kakao-consult-section {
+  margin: 0 0 14px 0;
+  padding: 18px 16px;
+  background: #FEF01B;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.kakao-consult-desc {
+  font-size: 13.5px;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin: 0 0 14px 0;
+}
+
+.btn-kakao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 16px;
+  background: #3A1D1D;
+  color: #FEF01B;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: calc(var(--radius) - 2px);
+  letter-spacing: -0.3px;
+  transition: all var(--transition);
+}
+
+.btn-kakao:hover,
+.btn-kakao:active {
+  background: #1a0d0d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ── 구매 버튼 섹션 ── */
+.purchase-section {
+  margin: 0 0 14px 0;
+}
+
+.btn-purchase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 16px;
+  background: linear-gradient(135deg, #1565C0, #1E88E5);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: var(--radius);
+  letter-spacing: -0.3px;
+  transition: all var(--transition);
+  box-shadow: 0 3px 12px rgba(21,101,192,0.35);
+}
+
+.btn-purchase:hover,
+.btn-purchase:active {
+  background: linear-gradient(135deg, #0D47A1, #1565C0);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(21,101,192,0.45);
+}
+
+/* ── 처음부터 버튼 (하단 단독) ── */
+.result-bottom-bar {
+  margin: 0 0 14px 0;
+}
+
+.btn-restart-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-restart-full:hover,
+.btn-restart-full:active {
+  background: var(--gray-200);
+  color: var(--gray-700);
 }
 

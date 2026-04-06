@@ -481,24 +481,36 @@
               <div id="installGuide"></div>
             </div>
 
-            <!-- 버튼 -->
-            <div class="btn-nav btn-nav-result">
-              <button class="btn-secondary" onclick="App.restart()">
-                <i class="fas fa-redo"></i> 처음부터 다시
-              </button>
-              <button class="btn-primary" onclick="App.printResult()">
-                <i class="fas fa-share-alt"></i> 결과 공유
-              </button>
+            <!-- 카카오톡 상담 버튼 -->
+            <div class="kakao-consult-section">
+              <p class="kakao-consult-desc">특이한 창문이거나 설치 조건이 고민되시나요?<br>설치하실 곳의 사진을 찍어서 카카오톡으로 문의해 주세요!<br><strong>전문가가 직접 안내해 드립니다. ✨</strong></p>
+              <a href="http://pf.kakao.com/_Ixdxcxob/chat" target="_blank" rel="noopener noreferrer" class="btn-kakao">
+                <i class="fas fa-comment"></i> 💬 카카오톡 설치 상담 연결하기
+              </a>
+            </div>
+
+            <!-- 구매 버튼 -->
+            <div class="purchase-section">
+              <a href="https://paseco.co.kr/goods/goods_list.php?cateCd=012002" target="_blank" rel="noopener noreferrer" class="btn-purchase">
+                <i class="fas fa-shopping-cart"></i> 🛒 제품 및 추가거치대 구매하기
+              </a>
             </div>
 
             <!-- ★ 유튜브 설치 가이드 섹션 ★ -->
             <div class="result-section youtube-section" id="youtubeSection">
               <div class="section-title youtube-title">
-                <i class="fab fa-youtube" style="color:#ff0000;"></i>
+                <i class="fab fa-youtube" style="color:#FF0000;"></i>
                 나에게 필요한 설치 가이드 영상
               </div>
               <p class="youtube-desc">선택하신 모델과 창문 환경에 맞는 영상을 확인해 보세요.</p>
               <div class="youtube-btn-list" id="youtubeBtnList"></div>
+            </div>
+
+            <!-- 처음부터 다시 + 고객센터 -->
+            <div class="result-bottom-bar">
+              <button class="btn-restart-full" onclick="App.restart()">
+                <i class="fas fa-redo"></i> 처음부터 다시
+              </button>
             </div>
 
             <!-- 고객센터 -->
