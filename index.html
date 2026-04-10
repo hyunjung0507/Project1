@@ -25,6 +25,8 @@
           <button class="btn-back" id="btnBack" onclick="App.prevStep()" style="display:none;">
             <i class="fas fa-chevron-left"></i>
           </button>
+          <!-- PASECO 로고 -->
+          <a href="https://paseco.co.kr" target="_blank" rel="noopener noreferrer" class="header-logo">PASECO</a>
           <div class="header-title">
             <i class="fas fa-snowflake header-icon"></i>
             <span>창문형 에어컨 설치 안내</span>
@@ -445,40 +447,40 @@
             <!-- 결과 헤더 -->
             <div class="result-header" id="resultHeader"></div>
 
-            <!-- 입력 요약 -->
+            <!-- 1. 설치 방법 안내 -->
             <div class="result-section">
-              <div class="section-title"><i class="fas fa-list-ul"></i> 입력 정보 요약</div>
-              <div class="summary-list" id="summaryList"></div>
+              <div class="section-title"><i class="fas fa-wrench"></i> 설치 방법 안내</div>
+              <div id="installGuide"></div>
             </div>
 
-            <!-- 설치 조건 체크 -->
-            <div class="result-section">
-              <div class="section-title"><i class="fas fa-tasks"></i> 설치 조건 확인</div>
-              <div class="check-list" id="checkList"></div>
-            </div>
-
-            <!-- 필요 키트/제품 -->
+            <!-- 2. 필요 키트/제품 -->
             <div class="result-section" id="kitSection">
               <div class="section-title"><i class="fas fa-box-open"></i> 필요 제품 및 키트</div>
               <div id="kitList"></div>
             </div>
 
-            <!-- 호환 모델 -->
+            <!-- 3. 우리집 창문정보 (구 입력 정보 요약) -->
+            <div class="result-section">
+              <div class="section-title"><i class="fas fa-home"></i> 우리집 창문정보</div>
+              <div class="summary-list" id="summaryList"></div>
+            </div>
+
+            <!-- 4. 설치 조건 체크 -->
+            <div class="result-section">
+              <div class="section-title"><i class="fas fa-tasks"></i> 설치 조건 확인</div>
+              <div class="check-list" id="checkList"></div>
+            </div>
+
+            <!-- 5. 호환 모델 -->
             <div class="result-section" id="modelSection">
               <div class="section-title"><i class="fas fa-th"></i> 호환 모델</div>
               <div id="modelList"></div>
             </div>
 
-            <!-- 특이사항 -->
+            <!-- 특이사항 (조건부 노출 — 위치 유지) -->
             <div class="result-section" id="specialSection" style="display:none;">
               <div class="section-title"><i class="fas fa-exclamation-triangle"></i> 특이사항</div>
               <div id="specialList"></div>
-            </div>
-
-            <!-- 설치 방법 -->
-            <div class="result-section">
-              <div class="section-title"><i class="fas fa-wrench"></i> 설치 방법 안내</div>
-              <div id="installGuide"></div>
             </div>
 
             <!-- 카카오톡 상담 버튼 -->
