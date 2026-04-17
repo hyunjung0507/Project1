@@ -53,8 +53,8 @@ const HEIGHT_RANGES = {
 
 const INSTALL_CRITERIA = {
   minWidth: 38,
-  minHeightStandard: 92,
-  minHeightMini: 77,
+  minHeightStandard: 92,  maxHeightStandard: 246,  // 일반: 92~246cm
+  minHeightMini: 77,      maxHeightMini: 132,       // 미니: 77~132cm
   minSillB: 1, maxSillB: 2,
   minSillC: 1.2
 };
@@ -256,23 +256,48 @@ const App = {
       state.windowWidth = w;
     } else { state.windowWidth = null; }
 
+    /* 세로 유효성 검사
+       일반: 92 ≤ h ≤ 246 cm
+       미니: 77 ≤ h ≤ 132 cm
+       그 외: 설치 불가 안내 */
+    const heightBlockEl = document.getElementById('heightImpossibleBlock');
     if (!isNaN(h) && h > 0) {
       const wrap = hEl.closest('.input-wrap');
       state.windowHeight = h;
-      if (h < INSTALL_CRITERIA.minHeightMini) {
-        wrap.classList.add('error'); wrap.classList.remove('success');
-        hHint.className = 'input-hint error';
-        hHint.textContent = `⚠ ${h}cm - 미니 제품 최소 기준(77cm)에도 미달`;
-      } else if (h < INSTALL_CRITERIA.minHeightStandard) {
-        wrap.classList.remove('error','success');
-        hHint.className = 'input-hint';
-        hHint.textContent = `ℹ ${h}cm - 미니 제품만 설치 가능`;
-      } else {
+
+      const inStandard = h >= INSTALL_CRITERIA.minHeightStandard && h <= INSTALL_CRITERIA.maxHeightStandard;
+      const inMini     = h >= INSTALL_CRITERIA.minHeightMini     && h <= INSTALL_CRITERIA.maxHeightMini;
+
+      if (inStandard && inMini) {
+        // 92~132cm: 일반·미니 모두 가능
         wrap.classList.add('success'); wrap.classList.remove('error');
         hHint.className = 'input-hint success';
         hHint.textContent = `✓ ${h}cm - 일반/미니 모두 설치 가능`;
+        if (heightBlockEl) heightBlockEl.style.display = 'none';
+      } else if (inStandard) {
+        // 133~246cm: 일반 전용
+        wrap.classList.add('success'); wrap.classList.remove('error');
+        hHint.className = 'input-hint success';
+        hHint.textContent = `✓ ${h}cm - 일반 제품 설치 가능 (미니 범위 초과)`;
+        if (heightBlockEl) heightBlockEl.style.display = 'none';
+      } else if (inMini) {
+        // 77~91cm: 미니 전용
+        wrap.classList.remove('error', 'success');
+        hHint.className = 'input-hint';
+        hHint.textContent = `ℹ ${h}cm - 미니 제품만 설치 가능`;
+        if (heightBlockEl) heightBlockEl.style.display = 'none';
+      } else {
+        // 설치 불가 범위 (77cm 미만 또는 246cm 초과)
+        wrap.classList.add('error'); wrap.classList.remove('success');
+        hHint.className = 'input-hint error';
+        hHint.textContent = `⚠ ${h}cm - 설치 가능 범위 벗어남 (일반 92~246cm / 미니 77~132cm)`;
+        if (heightBlockEl) heightBlockEl.style.display = 'flex';
+        state.windowHeight = null;  // 설치 불가 시 세로값 무효화
       }
-    } else { state.windowHeight = null; }
+    } else {
+      state.windowHeight = null;
+      if (heightBlockEl) heightBlockEl.style.display = 'none';
+    }
 
     if (btn) btn.disabled = !(state.windowWidth > 0 && state.windowHeight > 0);
   },

@@ -228,9 +228,22 @@
                   <input type="number" id="windowHeight" class="text-input" placeholder="예: 100" min="0" step="0.1" oninput="App.validateStep2()" inputmode="decimal" />
                   <span class="input-unit">cm</span>
                 </div>
-                <div class="input-hint" id="heightHint">일반 제품: 92cm 이상 / 미니 제품: 77cm 이상</div>
+                <div class="input-hint" id="heightHint">일반 제품: 92~246cm / 미니 제품: 77~132cm</div>
               </div>
             </div>
+
+            <!-- 세로 설치 불가 안내 블록 (범위 벗어날 때만 표시) -->
+            <div id="heightImpossibleBlock" class="height-impossible-block" style="display:none;">
+              <div class="height-impossible-icon"><i class="fas fa-exclamation-circle"></i></div>
+              <div class="height-impossible-content">
+                <p class="height-impossible-title">설치가 불가능한 사이즈입니다</p>
+                <p class="height-impossible-desc">입력하신 사이즈는 설치가 불가능합니다.<br>자세한 내용은 고객센터로 문의해 주세요.</p>
+                <a href="http://pf.kakao.com/_Ixdxcxob/chat" target="_blank" rel="noopener noreferrer" class="btn-height-kakao">
+                  <i class="fas fa-comment"></i> 💬 카카오톡으로 상담 연결하기
+                </a>
+              </div>
+            </div>
+
             <div class="btn-nav">
               <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
               <button class="btn-primary" id="btn-step2-next" onclick="App.nextStep()" disabled>다음 <i class="fas fa-chevron-right"></i></button>
