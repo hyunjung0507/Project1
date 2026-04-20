@@ -9,146 +9,108 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Noto Sans KR', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      background: linear-gradient(135deg, #e8f0fd 0%, #f0f4ff 50%, #e8f0fd 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-
-    .page-wrap {
-      width: 100%;
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 32px;
       max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* 상단 헤더 카드 */
-    .header-card {
-      background: linear-gradient(135deg, #1a6ee6, #1458c7);
-      border-radius: 20px;
-      padding: 28px 24px 24px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(26,110,230,0.12);
       text-align: center;
-      box-shadow: 0 12px 40px rgba(26,110,230,0.4);
     }
-
+    .logo-wrap {
+      margin-bottom: 24px;
+    }
     .logo-icon {
-      width: 64px;
-      height: 64px;
-      background: rgba(255,255,255,0.15);
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #1a6ee6, #1458c7);
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 32px;
       color: white;
-      margin-bottom: 14px;
-      backdrop-filter: blur(4px);
+      box-shadow: 0 8px 24px rgba(26,110,230,0.3);
     }
-
-    .header-card h1 {
-      font-size: 20px;
+    h1 {
+      font-size: 22px;
       font-weight: 700;
-      color: white;
-      margin-bottom: 6px;
+      color: #1e293b;
+      margin-bottom: 8px;
     }
-
-    .header-card p {
-      font-size: 13px;
-      color: rgba(255,255,255,0.75);
+    .subtitle {
+      font-size: 14px;
+      color: #64748b;
       line-height: 1.6;
+      margin-bottom: 28px;
     }
-
-    /* QR 카드 */
-    .qr-card {
-      background: white;
-      border-radius: 20px;
-      padding: 28px 24px;
-      text-align: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-
-    .qr-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #94a3b8;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
     .qr-wrap {
       display: inline-flex;
-      padding: 12px;
+      padding: 16px;
       background: white;
-      border: 3px solid #e2e8f0;
+      border: 2px solid #e2e8f0;
       border-radius: 16px;
-      margin-bottom: 16px;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
-
-    #qrcode canvas, #qrcode img { border-radius: 4px; display: block; }
-
-    .qr-divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 12px 0;
+    #qrcode canvas,
+    #qrcode img {
+      border-radius: 4px;
     }
-    .qr-divider::before,
-    .qr-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #e2e8f0;
-    }
-    .qr-divider span { font-size: 12px; color: #94a3b8; font-weight: 600; }
-
     .url-box {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
-      padding: 11px 14px;
-      text-align: left;
+      padding: 12px 16px;
+      margin-bottom: 20px;
       word-break: break-all;
     }
-    .url-label { font-size: 10px; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 3px; }
-    .url-text  { font-size: 12px; color: #475569; font-weight: 500; }
-
-    /* 사용 방법 카드 */
-    .steps-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 18px 20px;
-      backdrop-filter: blur(8px);
+    .url-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
     }
-
+    .url-text {
+      font-size: 13px;
+      color: #475569;
+      font-weight: 500;
+    }
+    .steps {
+      text-align: left;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
     .steps-title {
       font-size: 13px;
       font-weight: 700;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 12px;
+      color: #64748b;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
-
-    .steps-title i { color: #6ea8fe; }
-
     .step-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .step-item:last-child { margin-bottom: 0; }
-
     .step-num {
       width: 22px;
       height: 22px;
@@ -162,161 +124,129 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-
-    .step-txt { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
-
-    /* 버튼 카드 */
-    .btn-card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .step-txt {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
     }
-
     .btn-primary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      display: block;
+      width: 100%;
       padding: 14px;
       background: linear-gradient(135deg, #1a6ee6, #1458c7);
       color: white;
-      border-radius: 14px;
+      border-radius: 12px;
       font-size: 15px;
       font-weight: 700;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(26,110,230,0.4);
-      transition: all 0.2s;
-    }
-    .btn-primary:active { transform: scale(0.98); }
-
-    .btn-secondary {
+      box-shadow: 0 4px 12px rgba(26,110,230,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      margin-bottom: 12px;
+    }
+    .btn-secondary {
+      display: block;
+      width: 100%;
       padding: 12px;
-      background: rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.85);
-      border-radius: 14px;
+      background: #f1f5f9;
+      color: #475569;
+      border-radius: 12px;
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: none;
       cursor: pointer;
-      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .btn-secondary:active { background: rgba(255,255,255,0.18); }
-
     .note {
       font-size: 11px;
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-      line-height: 1.6;
-      padding: 0 8px;
+      color: #94a3b8;
+      margin-top: 16px;
+      line-height: 1.5;
     }
-
-    /* 기능 배지 */
-    .feature-badges {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .badge {
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.8);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
     @media print {
       body { background: white; padding: 0; }
-      .header-card { background: #1a6ee6 !important; -webkit-print-color-adjust: exact; }
-      .steps-card { background: #f8fafc !important; border-color: #e2e8f0 !important; }
-      .steps-title, .step-txt { color: #334155 !important; }
-      .btn-card, .note { display: none; }
+      .card { box-shadow: none; border: 1px solid #e2e8f0; }
+      .btn-primary, .btn-secondary { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="page-wrap">
-
-    <!-- 헤더 -->
-    <div class="header-card">
-      <div class="logo-icon"><i class="fas fa-snowflake"></i></div>
-      <h1>창문형 에어컨 설치 안내</h1>
-      <p>QR 코드를 스캔하거나 링크를 클릭하면<br>설치 안내 웹앱에 바로 접속할 수 있습니다.</p>
-      <div class="feature-badges">
-        <span class="badge">📱 앱 설치 불필요</span>
-        <span class="badge">🎬 유튜브 가이드</span>
-        <span class="badge">✅ 설치 가능 체크</span>
+  <div class="card">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <i class="fas fa-snowflake"></i>
       </div>
     </div>
+    <h1>창문형 에어컨 설치 안내</h1>
+    <p class="subtitle">QR 코드를 스캔하거나 아래 링크를 클릭하면<br>설치 안내 웹앱에 바로 접속할 수 있습니다.</p>
 
     <!-- QR 코드 -->
-    <div class="qr-card">
-      <div class="qr-label">QR 코드로 바로 접속</div>
-      <div class="qr-wrap">
-        <div id="qrcode"></div>
-      </div>
-      <div class="qr-divider"><span>또는</span></div>
-      <div class="url-box">
-        <div class="url-label">접속 URL</div>
-        <div class="url-text" id="currentUrl">로딩 중...</div>
-      </div>
+    <div class="qr-wrap">
+      <div id="qrcode"></div>
     </div>
 
-    <!-- 사용 방법 -->
-    <div class="steps-card">
-      <div class="steps-title"><i class="fas fa-mobile-alt"></i> 사용 방법</div>
+    <!-- URL 표시 -->
+    <div class="url-box">
+      <div class="url-label">접속 URL</div>
+      <div class="url-text" id="currentUrl">로딩 중...</div>
+    </div>
+
+    <!-- 사용 안내 -->
+    <div class="steps">
+      <div class="steps-title">
+        <i class="fas fa-mobile-alt" style="color:#1a6ee6;"></i>
+        사용 방법
+      </div>
       <div class="step-item">
         <div class="step-num">1</div>
         <div class="step-txt">스마트폰 카메라로 QR 코드를 스캔합니다.</div>
       </div>
       <div class="step-item">
         <div class="step-num">2</div>
-        <div class="step-txt">에어컨 모델 → 창문 유형 → 크기 → 창틀 환경 순서로 입력합니다.</div>
+        <div class="step-txt">창문 유형, 크기 등을 단계별로 입력합니다.</div>
       </div>
       <div class="step-item">
         <div class="step-num">3</div>
-        <div class="step-txt">설치 가능 여부, 필요 키트, 맞춤형 유튜브 설치 영상을 즉시 확인합니다.</div>
+        <div class="step-txt">설치 가능 여부와 필요 키트를 즉시 확인합니다.</div>
       </div>
     </div>
 
     <!-- 버튼 -->
-    <div class="btn-card">
-      <a href="https://project1-lac-two.vercel.app/" class="btn-primary">
-        <i class="fas fa-play-circle"></i> 설치 안내 바로 시작하기
-      </a>
-      <button onclick="window.print()" class="btn-secondary">
-        <i class="fas fa-print"></i> QR 코드 인쇄하기
-      </button>
-    </div>
+    <a href="index.html" class="btn-primary">
+      <i class="fas fa-play-circle"></i>
+      설치 안내 바로 시작하기
+    </a>
+    <button onclick="window.print()" class="btn-secondary">
+      <i class="fas fa-print"></i>
+      QR 코드 인쇄하기
+    </button>
 
     <p class="note">
-      별도의 앱 설치 없이 브라우저에서 바로 사용 가능합니다.<br>
-      iOS Safari / Android Chrome 모두 지원합니다.<br>
-      서비스센터: <strong style="color:rgba(255,255,255,0.6);">1588-1336</strong>
+      ※ 별도의 앱 설치 없이 브라우저에서 바로 사용 가능합니다.<br>
+      iOS Safari / Android Chrome 모두 지원합니다.
     </p>
-
   </div>
 
   <script>
-    const baseUrl = 'https://project1-lac-two.vercel.app/' ;
-    document.getElementById('currentUrl').textContent = baseUrl;
+    // 현재 URL 가져오기 (index.html로 이동)
+    const baseUrl = window.location.href.replace('qr.html', 'index.html');
+    const currentUrlEl = document.getElementById('currentUrl');
+    if (currentUrlEl) currentUrlEl.textContent = baseUrl;
 
-    new QRCode(document.getElementById('qrcode'), {
+    // QR 코드 생성
+    const qr = new QRCode(document.getElementById('qrcode'), {
       text: baseUrl,
       width: 200,
       height: 200,
-      colorDark: '#1458c7',
+      colorDark: '#1a6ee6',
       colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.H
     });
