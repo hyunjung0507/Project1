@@ -17,7 +17,6 @@
 </head>
 <body>
   <div id="app">
-    <!-- 앱 전체 컨테이너 -->
     <div class="app-container">
 
       <!-- 헤더 -->
@@ -26,30 +25,28 @@
           <button class="btn-back" id="btnBack" onclick="App.prevStep()" style="display:none;">
             <i class="fas fa-chevron-left"></i>
           </button>
+          <!-- PASECO 텍스트 브랜딩 -->
+          <span class="header-logo">PASECO</span>
           <div class="header-title">
             <i class="fas fa-snowflake header-icon"></i>
             <span>창문형 에어컨 설치 안내</span>
           </div>
           <div class="header-spacer"></div>
         </div>
-        <!-- 진행 바 -->
-        <div class="progress-bar-wrap" id="progressBarWrap">
+        <div class="progress-bar-wrap" id="progressBarWrap" style="display:none;">
           <div class="progress-bar" id="progressBar"></div>
         </div>
         <div class="step-indicator" id="stepIndicator"></div>
       </header>
 
-      <!-- 메인 컨텐츠 -->
       <main class="app-main" id="appMain">
 
         <!-- ==================== STEP 0: 시작 화면 ==================== -->
-        <div class="screen" id="screen-0" data-step="0">
+        <div class="screen" id="screen-0">
           <div class="screen-inner">
             <div class="welcome-hero">
               <div class="hero-icon-wrap">
-                <div class="hero-icon">
-                  <i class="fas fa-wind"></i>
-                </div>
+                <div class="hero-icon"><i class="fas fa-wind"></i></div>
               </div>
               <h1 class="welcome-title">창문형 에어컨<br>설치 안내</h1>
               <p class="welcome-subtitle">몇 가지 정보를 입력하시면<br>설치 가능 여부와 필요 키트를<br>바로 확인할 수 있습니다.</p>
@@ -57,24 +54,15 @@
             <div class="welcome-features">
               <div class="feature-item">
                 <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                <div class="feature-text">
-                  <strong>설치 가능 여부 자동 확인</strong>
-                  <span>창문 크기를 입력하면 즉시 결과</span>
-                </div>
+                <div class="feature-text"><strong>설치 가능 여부 자동 확인</strong><span>창문 크기를 입력하면 즉시 결과</span></div>
               </div>
               <div class="feature-item">
                 <div class="feature-icon"><i class="fas fa-box-open"></i></div>
-                <div class="feature-text">
-                  <strong>필요 키트 및 모델 안내</strong>
-                  <span>제품별 추가 키트 호환 정보 제공</span>
-                </div>
+                <div class="feature-text"><strong>필요 키트 및 모델 안내</strong><span>제품별 추가 키트 호환 정보 제공</span></div>
               </div>
               <div class="feature-item">
-                <div class="feature-icon"><i class="fas fa-tools"></i></div>
-                <div class="feature-text">
-                  <strong>단계별 설치 방법 안내</strong>
-                  <span>특수 창문 유형별 맞춤 안내</span>
-                </div>
+                <div class="feature-icon"><i class="fas fa-youtube" style="color:#ff0000;"></i></div>
+                <div class="feature-text"><strong>맞춤형 설치 영상 안내</strong><span>모델·창문 환경별 유튜브 가이드 제공</span></div>
               </div>
             </div>
             <div class="btn-wrap">
@@ -85,8 +73,98 @@
           </div>
         </div>
 
+        <!-- ==================== STEP 0.5: 모델 선택 ==================== -->
+        <div class="screen hidden" id="screen-model">
+          <div class="screen-inner">
+            <div class="step-header">
+              <div class="step-badge">모델 선택</div>
+              <h2 class="step-title">보유하신 에어컨 모델을 선택해 주세요.</h2>
+              <p class="step-desc">해당하는 제품군을 선택하시면 맞춤 안내를 제공합니다.</p>
+            </div>
+            <div class="model-choice-list">
+
+              <button class="model-card" id="model-card-A" onclick="App.selectModel('A')">
+                <div class="model-card-left">
+                  <div class="model-card-icon" style="background:#e8f0fd;color:#1a6ee6;">
+                    <i class="fas fa-wind"></i>
+                  </div>
+                  <div class="model-card-info">
+                    <div class="model-card-label">정속형 / 인버터</div>
+                    <div class="model-card-models">PWA-2100 · PWA-2200 · PWA-2250 · PWA-3200 · PWA-3250</div>
+                  </div>
+                </div>
+                <div class="model-card-check"><i class="fas fa-check"></i></div>
+              </button>
+
+              <button class="model-card" id="model-card-B" onclick="App.selectModel('B')">
+                <div class="model-card-left">
+                  <div class="model-card-icon" style="background:#fef3c7;color:#d97706;">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="model-card-info">
+                    <div class="model-card-label">프리미엄</div>
+                    <div class="model-card-models">PWA-3400 · PWA-3500 · PWA-3600 · PWA-M3500 · PWA-3301BE2</div>
+                  </div>
+                </div>
+                <div class="model-card-check"><i class="fas fa-check"></i></div>
+              </button>
+
+              <button class="model-card" id="model-card-C" onclick="App.selectModel('C')">
+                <div class="model-card-left">
+                  <div class="model-card-icon" style="background:#dcfce7;color:#16a34a;">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div class="model-card-info">
+                    <div class="model-card-label">듀얼인버터</div>
+                    <div class="model-card-models">PWA-3100 · PWA-3300 · PWA-3300BE</div>
+                  </div>
+                </div>
+                <div class="model-card-check"><i class="fas fa-check"></i></div>
+              </button>
+
+              <button class="model-card" id="model-card-D" onclick="App.selectModel('D')">
+                <div class="model-card-left">
+                  <div class="model-card-icon" style="background:#f3e8ff;color:#9333ea;">
+                    <i class="fas fa-layer-group"></i>
+                  </div>
+                  <div class="model-card-info">
+                    <div class="model-card-label">하이브리드</div>
+                    <div class="model-card-models">PHA-M3240BE · PHA-M3600BE2</div>
+                  </div>
+                </div>
+                <div class="model-card-check"><i class="fas fa-check"></i></div>
+              </button>
+
+            </div>
+            <div class="btn-nav">
+              <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
+              <button class="btn-primary" id="btn-model-next" onclick="App.nextStep()" disabled>다음 <i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== 여닫이 설치 불가 화면 ==================== -->
+        <div class="screen hidden" id="screen-casement-block">
+          <div class="screen-inner casement-block-inner">
+            <div class="casement-emoji">😭</div>
+            <h2 class="casement-title">앗! 정말 아쉬워요...</h2>
+            <div class="casement-msg">
+              <p>고객님의 창문은 <strong>'여닫이'</strong> 형태군요!</p>
+              <p>현재 모델들은 <strong>미닫이 창문에만</strong> 안전하게<br>설치가 가능하답니다. 🏠💔</p>
+              <p style="margin-top:12px;">혹시 다른 방에 있는 <strong>'미닫이 창문'</strong>은<br>어떠신가요?<br>다시 한번 확인해 주시면 감사하겠습니다! 🙏✨</p>
+            </div>
+            <div class="casement-illustration">
+              <i class="fas fa-door-open"></i>
+              <span>여닫이 창문</span>
+            </div>
+            <button class="btn-primary btn-full" onclick="App.restart()" style="margin-top:8px;">
+              <i class="fas fa-home"></i> 처음으로 돌아가기
+            </button>
+          </div>
+        </div>
+
         <!-- ==================== STEP 1: 창문 유형 ==================== -->
-        <div class="screen hidden" id="screen-1" data-step="1">
+        <div class="screen hidden" id="screen-1">
           <div class="screen-inner">
             <div class="step-header">
               <div class="step-badge">1단계</div>
@@ -96,9 +174,7 @@
             <div class="choice-grid">
               <button class="choice-card" id="choice-window-sliding" onclick="App.selectWindowType('sliding')">
                 <div class="choice-card-inner">
-                  <div class="choice-icon">
-                    <i class="fas fa-arrows-alt-h"></i>
-                  </div>
+                  <div class="choice-icon"><i class="fas fa-arrows-alt-h"></i></div>
                   <div class="choice-label">미닫이 창문</div>
                   <div class="choice-desc">좌우로 밀어서 여는 창문</div>
                 </div>
@@ -106,21 +182,12 @@
               </button>
               <button class="choice-card" id="choice-window-casement" onclick="App.selectWindowType('casement')">
                 <div class="choice-card-inner">
-                  <div class="choice-icon">
-                    <i class="fas fa-door-open"></i>
-                  </div>
+                  <div class="choice-icon"><i class="fas fa-door-open"></i></div>
                   <div class="choice-label">여닫이 창문</div>
                   <div class="choice-desc">앞뒤로 열리는 창문</div>
                 </div>
                 <div class="choice-check"><i class="fas fa-check"></i></div>
               </button>
-            </div>
-            <div class="info-box warning-box" id="casementWarning" style="display:none;">
-              <i class="fas fa-exclamation-triangle"></i>
-              <div>
-                <strong>여닫이 창문 안내</strong>
-                <p>여닫이 창문의 경우 설치 방법이 다를 수 있으니, 제조사 고객센터에 문의하시기를 권장합니다.</p>
-              </div>
             </div>
             <div class="btn-nav">
               <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
@@ -130,7 +197,7 @@
         </div>
 
         <!-- ==================== STEP 2: 창문 가로/세로 ==================== -->
-        <div class="screen hidden" id="screen-2" data-step="2">
+        <div class="screen hidden" id="screen-2">
           <div class="screen-inner">
             <div class="step-header">
               <div class="step-badge">2단계</div>
@@ -138,13 +205,8 @@
               <p class="step-desc">창문이 열렸을 때의 실제 크기를 측정해 입력해 주세요.</p>
             </div>
             <div class="measure-diagram">
-              <!-- 창문 측정 다이어그램 -->
               <div class="diagram-box diagram-box-img">
-                <img
-                  src="images/window-measure.png"
-                  alt="창문 측정 방법 - 열리는 창문의 가로 38cm 이상 (전 모델 공통)"
-                  class="diagram-img"
-                />
+                <img src="images/window-measure.png" alt="창문 측정 방법 - 38cm 이상 전 모델 공통" class="diagram-img" />
                 <p class="diagram-caption">
                   <i class="fas fa-info-circle"></i>
                   열리는 창문의 가로가 <strong>38cm 이상</strong>이어야 설치 가능합니다. (전 모델 공통)
@@ -153,30 +215,35 @@
             </div>
             <div class="input-group-list">
               <div class="input-group">
-                <label class="input-label">
-                  <i class="fas fa-arrows-alt-h label-icon"></i>
-                  가로 <span class="unit-text">(cm)</span>
-                </label>
+                <label class="input-label"><i class="fas fa-arrows-alt-h label-icon"></i> 가로 <span class="unit-text">(cm)</span></label>
                 <div class="input-wrap">
-                  <input type="number" id="windowWidth" class="text-input" placeholder="예: 55" min="0" step="0.1"
-                    oninput="App.validateStep2()" inputmode="decimal" />
+                  <input type="number" id="windowWidth" class="text-input" placeholder="예: 55" min="0" step="0.1" oninput="App.validateStep2()" inputmode="decimal" />
                   <span class="input-unit">cm</span>
                 </div>
                 <div class="input-hint" id="widthHint">최소 38cm 이상이어야 설치 가능합니다.</div>
               </div>
               <div class="input-group">
-                <label class="input-label">
-                  <i class="fas fa-arrows-alt-v label-icon"></i>
-                  세로 <span class="unit-text">(cm)</span>
-                </label>
+                <label class="input-label"><i class="fas fa-arrows-alt-v label-icon"></i> 세로 <span class="unit-text">(cm)</span></label>
                 <div class="input-wrap">
-                  <input type="number" id="windowHeight" class="text-input" placeholder="예: 100" min="0" step="0.1"
-                    oninput="App.validateStep2()" inputmode="decimal" />
+                  <input type="number" id="windowHeight" class="text-input" placeholder="예: 100" min="0" step="0.1" oninput="App.validateStep2()" inputmode="decimal" />
                   <span class="input-unit">cm</span>
                 </div>
-                <div class="input-hint" id="heightHint">일반 제품: 92cm 이상 / 미니 제품: 77cm 이상</div>
+                <div class="input-hint" id="heightHint">일반 제품: 92~246cm / 미니 제품: 77~230cm</div>
               </div>
             </div>
+
+            <!-- 세로 설치 불가 안내 블록 (범위 벗어날 때만 표시) -->
+            <div id="heightImpossibleBlock" class="height-impossible-block" style="display:none;">
+              <div class="height-impossible-icon"><i class="fas fa-exclamation-circle"></i></div>
+              <div class="height-impossible-content">
+                <p class="height-impossible-title">설치가 불가능한 사이즈입니다</p>
+                <p class="height-impossible-desc">입력하신 사이즈는 설치가 불가능합니다.<br>자세한 내용은 고객센터로 문의해 주세요.</p>
+                <a href="http://pf.kakao.com/_Ixdxcxob/chat" target="_blank" rel="noopener noreferrer" class="btn-height-kakao">
+                  <i class="fas fa-comment"></i> 💬 카카오톡으로 상담 연결하기
+                </a>
+              </div>
+            </div>
+
             <div class="btn-nav">
               <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
               <button class="btn-primary" id="btn-step2-next" onclick="App.nextStep()" disabled>다음 <i class="fas fa-chevron-right"></i></button>
@@ -184,8 +251,8 @@
           </div>
         </div>
 
-        <!-- ==================== STEP 3: 창문 높이 및 제품 선택 ==================== -->
-        <div class="screen hidden" id="screen-3" data-step="3">
+        <!-- ==================== STEP 3: 제품 유형(일반/미니) ==================== -->
+        <div class="screen hidden" id="screen-3">
           <div class="screen-inner">
             <div class="step-header">
               <div class="step-badge">3단계</div>
@@ -195,9 +262,7 @@
             <div class="choice-grid">
               <button class="choice-card" id="choice-product-standard" onclick="App.selectProductType('standard')">
                 <div class="choice-card-inner">
-                  <div class="choice-icon">
-                    <i class="fas fa-box"></i>
-                  </div>
+                  <div class="choice-icon"><i class="fas fa-box"></i></div>
                   <div class="choice-label">일반 제품</div>
                   <div class="choice-desc">창문 높이 92cm 이상</div>
                 </div>
@@ -205,30 +270,21 @@
               </button>
               <button class="choice-card" id="choice-product-mini" onclick="App.selectProductType('mini')">
                 <div class="choice-card-inner">
-                  <div class="choice-icon">
-                    <i class="fas fa-compress-alt"></i>
-                  </div>
+                  <div class="choice-icon"><i class="fas fa-compress-alt"></i></div>
                   <div class="choice-label">미니 제품</div>
                   <div class="choice-desc">창문 높이 77cm 이상</div>
                 </div>
                 <div class="choice-check"><i class="fas fa-check"></i></div>
               </button>
             </div>
-
-            <!-- 높이 범위 선택 -->
             <div class="sub-section" id="heightRangeSection" style="display:none;">
               <div class="sub-section-title">창문 높이 범위를 선택해 주세요.</div>
-              <div class="range-cards" id="heightRangeCards">
-                <!-- JS로 동적 생성 -->
-              </div>
+              <div class="range-cards" id="heightRangeCards"></div>
             </div>
-
-            <!-- 추가 키트 안내 -->
             <div class="info-box kit-box" id="kitInfoBox" style="display:none;">
               <i class="fas fa-info-circle"></i>
               <div id="kitInfoText"></div>
             </div>
-
             <div class="btn-nav">
               <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
               <button class="btn-primary" id="btn-step3-next" onclick="App.nextStep()" disabled>다음 <i class="fas fa-chevron-right"></i></button>
@@ -237,34 +293,26 @@
         </div>
 
         <!-- ==================== STEP 4: 창틀 깊이 ==================== -->
-        <div class="screen hidden" id="screen-4" data-step="4">
+        <div class="screen hidden" id="screen-4">
           <div class="screen-inner">
             <div class="step-header">
               <div class="step-badge">4단계</div>
               <h2 class="step-title">창틀 깊이가 2cm 미만인가요?</h2>
               <p class="step-desc">창틀 깊이(b)를 측정하여 선택해 주세요.</p>
             </div>
-
             <div class="measure-diagram">
               <div class="diagram-box diagram-box-img">
-                <img
-                  src="images/sill-depth.png"
-                  alt="창틀 단면 도면 - 설치기준 a(창틀 너비), b(창틀 깊이), c(창틀 홈 너비)"
-                  class="diagram-img"
-                />
+                <img src="images/sill-depth.png" alt="창틀 단면 도면 - a(창틀 너비), b(창틀 깊이), c(창틀 홈 너비)" class="diagram-img" />
                 <p class="diagram-caption">
                   <i class="fas fa-info-circle"></i>
                   창틀 깊이(b)가 <strong>2cm 이상</strong>인지 확인해 주세요.
                 </p>
               </div>
             </div>
-
             <div class="choice-grid">
               <button class="choice-card" id="choice-sill-shallow" onclick="App.selectSillDepth('shallow')">
                 <div class="choice-card-inner">
-                  <div class="choice-icon choice-icon-warn">
-                    <i class="fas fa-exclamation"></i>
-                  </div>
+                  <div class="choice-icon choice-icon-warn"><i class="fas fa-exclamation"></i></div>
                   <div class="choice-label">네, 2cm 미만</div>
                   <div class="choice-desc">창틀 깊이가 2cm보다 얕음</div>
                 </div>
@@ -272,43 +320,28 @@
               </button>
               <button class="choice-card" id="choice-sill-deep" onclick="App.selectSillDepth('deep')">
                 <div class="choice-card-inner">
-                  <div class="choice-icon choice-icon-ok">
-                    <i class="fas fa-check-double"></i>
-                  </div>
+                  <div class="choice-icon choice-icon-ok"><i class="fas fa-check-double"></i></div>
                   <div class="choice-label">아니요, 2cm 이상</div>
                   <div class="choice-desc">창틀 깊이가 충분함</div>
                 </div>
                 <div class="choice-check"><i class="fas fa-check"></i></div>
               </button>
             </div>
-
-            <!-- 2cm 미만인 경우 추가 입력 -->
             <div class="sub-section" id="shallowSillSection" style="display:none;">
-              <div class="sub-section-title">
-                <i class="fas fa-ruler-combined"></i>
-                (b)+(c) 사이즈를 입력해 주세요.
-              </div>
+              <div class="sub-section-title"><i class="fas fa-ruler-combined"></i> (b)+(c) 사이즈를 입력해 주세요.</div>
               <div class="input-group-list">
                 <div class="input-group">
-                  <label class="input-label">
-                    <span class="label-badge">b</span>
-                    창틀 높이 (cm)
-                  </label>
+                  <label class="input-label"><span class="label-badge">b</span> 창틀 높이 (cm)</label>
                   <div class="input-wrap">
-                    <input type="number" id="sillB" class="text-input" placeholder="예: 1.5" min="0" step="0.1"
-                      oninput="App.validateSillBC()" inputmode="decimal" />
+                    <input type="number" id="sillB" class="text-input" placeholder="예: 1.5" min="0" step="0.1" oninput="App.validateSillBC()" inputmode="decimal" />
                     <span class="input-unit">cm</span>
                   </div>
                   <div class="input-hint">1cm 이상 2cm 미만이어야 합니다.</div>
                 </div>
                 <div class="input-group">
-                  <label class="input-label">
-                    <span class="label-badge">c</span>
-                    창틀 홈 너비 (cm)
-                  </label>
+                  <label class="input-label"><span class="label-badge">c</span> 창틀 홈 너비 (cm)</label>
                   <div class="input-wrap">
-                    <input type="number" id="sillC" class="text-input" placeholder="예: 1.5" min="0" step="0.1"
-                      oninput="App.validateSillBC()" inputmode="decimal" />
+                    <input type="number" id="sillC" class="text-input" placeholder="예: 1.5" min="0" step="0.1" oninput="App.validateSillBC()" inputmode="decimal" />
                     <span class="input-unit">cm</span>
                   </div>
                   <div class="input-hint">1.2cm 이상이어야 합니다.</div>
@@ -316,7 +349,6 @@
               </div>
               <div class="info-box" id="sillBCResult" style="display:none;"></div>
             </div>
-
             <div class="btn-nav">
               <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
               <button class="btn-primary" id="btn-step4-next" onclick="App.nextStep()" disabled>다음 <i class="fas fa-chevron-right"></i></button>
@@ -324,63 +356,85 @@
           </div>
         </div>
 
-        <!-- ==================== STEP 5: 특수 창문 유형 ==================== -->
-        <div class="screen hidden" id="screen-5" data-step="5">
+        <!-- ==================== STEP 5: 창문 환경 선택 (4가지 카드) ==================== -->
+        <div class="screen hidden" id="screen-5">
           <div class="screen-inner">
             <div class="step-header">
               <div class="step-badge">5단계</div>
-              <h2 class="step-title">해당 창문에 해당하는 경우를 선택해 주세요.</h2>
-              <p class="step-desc">해당하는 항목을 모두 선택해 주세요. (중복 선택 가능)</p>
+              <h2 class="step-title">창문 환경을 선택해 주세요.</h2>
+              <p class="step-desc">고객님의 창틀 유형을 선택하시면 맞춤 설치법을 안내해 드립니다.</p>
             </div>
 
-            <div class="multi-choice-list">
-              <button class="multi-choice-card" id="choice-special-wood" onclick="App.toggleSpecial('wood')">
-                <div class="multi-choice-icon">
-                  <i class="fas fa-tree"></i>
+            <div class="env-grid">
+              <!-- 옵션 1: 플라스틱 샷시 -->
+              <button class="env-card" id="env-card-plastic" onclick="App.selectEnv('plastic')">
+                <div class="env-card-icon" style="background:#e8f0fd;color:#1a6ee6;">
+                  <i class="fas fa-border-style"></i>
                 </div>
-                <div class="multi-choice-content">
-                  <div class="multi-choice-label">나무 창틀</div>
-                  <div class="multi-choice-desc">목재 소재의 창틀</div>
-                </div>
-                <div class="multi-choice-check"><i class="fas fa-check"></i></div>
+                <div class="env-card-label">플라스틱 샷시</div>
+                <div class="env-card-desc">PVC 재질의 일반 샷시<br>가장 일반적인 형태의 창틀</div>
+                <div class="env-card-check"><i class="fas fa-check"></i></div>
               </button>
 
-              <button class="multi-choice-card" id="choice-special-split" onclick="App.toggleSpecial('split')">
-                <div class="multi-choice-icon">
-                  <i class="fas fa-columns"></i>
-                </div>
-                <div class="multi-choice-content">
-                  <div class="multi-choice-label">분할 창문</div>
-                  <div class="multi-choice-desc">중간에 프레임이 있는 분할된 창문</div>
-                </div>
-                <div class="multi-choice-check"><i class="fas fa-check"></i></div>
-              </button>
-
-              <button class="multi-choice-card" id="choice-special-thick" onclick="App.toggleSpecial('thick')">
-                <div class="multi-choice-icon">
+              <!-- 옵션 2: 두꺼운 창틀 -->
+              <button class="env-card" id="env-card-thick" onclick="App.selectEnv('thick')">
+                <div class="env-card-icon" style="background:#fef3c7;color:#d97706;">
                   <i class="fas fa-expand-alt"></i>
                 </div>
-                <div class="multi-choice-content">
-                  <div class="multi-choice-label">두꺼운 창틀</div>
-                  <div class="multi-choice-desc">창틀 너비(a)가 두꺼운 경우</div>
+                <div class="env-card-label">두꺼운 창틀</div>
+                <div class="env-card-desc">창틀의 두께가<br>넓은 경우</div>
+                <div class="env-card-check"><i class="fas fa-check"></i></div>
+              </button>
+
+              <!-- 옵션 3: 나무 창틀 -->
+              <button class="env-card" id="env-card-wood" onclick="App.selectEnv('wood')">
+                <div class="env-card-icon" style="background:#fef9c3;color:#a16207;">
+                  <i class="fas fa-tree"></i>
                 </div>
-                <div class="multi-choice-check"><i class="fas fa-check"></i></div>
+                <div class="env-card-label">나무 창틀</div>
+                <div class="env-card-desc">옛날 주택 등<br>나무 소재 창틀</div>
+                <div class="env-card-check"><i class="fas fa-check"></i></div>
+              </button>
+
+              <!-- 옵션 4: 분할 창문 -->
+              <button class="env-card" id="env-card-split" onclick="App.selectEnv('split')">
+                <div class="env-card-icon" style="background:#f0fdf4;color:#16a34a;">
+                  <i class="fas fa-columns"></i>
+                </div>
+                <div class="env-card-label">분할 창문</div>
+                <div class="env-card-desc">추가 키트 필요<br>창문이 높아 연장 키트 필요</div>
+                <div class="env-card-check"><i class="fas fa-check"></i></div>
               </button>
             </div>
 
-            <!-- 분할 창문 안내 -->
-            <div class="special-guide" id="splitGuide" style="display:none;">
-              <div class="special-guide-header">
-                <i class="fas fa-columns"></i>
-                <strong>분할 창문 안내</strong>
+            <!-- 두꺼운 창틀 안내 (env=thick) -->
+            <div class="special-guide" id="thickGuide" style="display:none;">
+              <div class="special-guide-header"><i class="fas fa-expand-alt"></i><strong>두꺼운 창틀 안내</strong></div>
+              <div class="special-guide-content">
+                <div class="info-box info-box-blue">
+                  <i class="fas fa-info-circle"></i>
+                  <div>
+                    <p>틀 너비(a)가 1.2cm 이상인 경우, 두꺼운 창틀 방법으로 설치해야 합니다.</p>
+                    <p style="margin-top:8px;">프리미엄 제품은 창틀 너비에 따라 볼트를 자유롭게 조절해 설치할 수 있습니다.</p>
+                  </div>
+                </div>
+                <div class="input-group" style="margin-top:12px;">
+                  <label class="input-label"><span class="label-badge">a</span> 창틀 너비 (cm)</label>
+                  <div class="input-wrap">
+                    <input type="number" id="frameA" class="text-input" placeholder="예: 1.5" min="0" step="0.1" oninput="App.validateFrameA()" inputmode="decimal" />
+                    <span class="input-unit">cm</span>
+                  </div>
+                  <div class="input-hint" id="frameAHint">두꺼운 창틀 방법 적용 여부를 확인합니다.</div>
+                </div>
               </div>
+            </div>
+
+            <!-- 분할 창문 안내 (env=split) -->
+            <div class="special-guide" id="splitGuide" style="display:none;">
+              <div class="special-guide-header"><i class="fas fa-columns"></i><strong>분할 창문 안내</strong></div>
               <div class="special-guide-content">
                 <div class="split-img-wrap">
-                  <img
-                    src="images/split-window-kit.png"
-                    alt="분할 창문 설치 방법 - X(잘못된 설치)와 O(올바른 설치) 비교"
-                    class="diagram-img"
-                  />
+                  <img src="images/split-window-kit.png" alt="분할 창문 설치 방법 - X(잘못된 설치)와 O(올바른 설치) 비교" class="diagram-img" />
                   <div class="split-img-labels">
                     <span class="split-label split-label-x"><i class="fas fa-times"></i> 잘못된 설치</span>
                     <span class="split-label split-label-o"><i class="fas fa-check"></i> 올바른 설치</span>
@@ -393,40 +447,6 @@
               </div>
             </div>
 
-            <!-- 두꺼운 창틀 안내 -->
-            <div class="special-guide" id="thickGuide" style="display:none;">
-              <div class="special-guide-header">
-                <i class="fas fa-expand-alt"></i>
-                <strong>두꺼운 창틀 안내</strong>
-              </div>
-              <div class="special-guide-content">
-                <div class="info-box info-box-blue">
-                  <i class="fas fa-info-circle"></i>
-                  <div>
-                    <p>틀 너비(a)가 1.2cm 이상인 경우, 두꺼운 창틀 방법으로 설치해야 합니다.</p>
-                    <p style="margin-top:8px;">프리미엄 제품은 창틀 너비에 따라 볼트를 자유롭게 조절해 설치할 수 있습니다.</p>
-                  </div>
-                </div>
-                <div class="input-group" style="margin-top:12px;">
-                  <label class="input-label">
-                    <span class="label-badge">a</span>
-                    창틀 너비 (cm)
-                  </label>
-                  <div class="input-wrap">
-                    <input type="number" id="frameA" class="text-input" placeholder="예: 1.5" min="0" step="0.1"
-                      oninput="App.validateFrameA()" inputmode="decimal" />
-                    <span class="input-unit">cm</span>
-                  </div>
-                  <div class="input-hint" id="frameAHint">두꺼운 창틀 방법 적용 여부를 확인합니다.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="skip-note">
-              <i class="fas fa-info-circle"></i>
-              해당 사항이 없으면 선택 없이 다음 단계로 이동해 주세요.
-            </div>
-
             <div class="btn-nav">
               <button class="btn-secondary" onclick="App.prevStep()"><i class="fas fa-chevron-left"></i> 이전</button>
               <button class="btn-primary" id="btn-step5-next" onclick="App.showResult()">결과 확인 <i class="fas fa-clipboard-check"></i></button>
@@ -435,71 +455,80 @@
         </div>
 
         <!-- ==================== STEP 6: 결과 화면 ==================== -->
-        <div class="screen hidden" id="screen-6" data-step="6">
+        <div class="screen hidden" id="screen-6">
           <div class="screen-inner">
             <!-- 결과 헤더 -->
-            <div class="result-header" id="resultHeader">
-              <!-- JS로 동적 생성 -->
-            </div>
+            <div class="result-header" id="resultHeader"></div>
 
-            <!-- 입력 요약 -->
-            <div class="result-section">
-              <div class="section-title"><i class="fas fa-list-ul"></i> 입력 정보 요약</div>
-              <div class="summary-list" id="summaryList">
-                <!-- JS로 동적 생성 -->
-              </div>
-            </div>
-
-            <!-- 설치 조건 체크 -->
-            <div class="result-section">
-              <div class="section-title"><i class="fas fa-tasks"></i> 설치 조건 확인</div>
-              <div class="check-list" id="checkList">
-                <!-- JS로 동적 생성 -->
-              </div>
-            </div>
-
-            <!-- 필요 키트/제품 -->
-            <div class="result-section" id="kitSection">
-              <div class="section-title"><i class="fas fa-box-open"></i> 필요 제품 및 키트</div>
-              <div id="kitList">
-                <!-- JS로 동적 생성 -->
-              </div>
-            </div>
-
-            <!-- 호환 모델 -->
-            <div class="result-section" id="modelSection">
-              <div class="section-title"><i class="fas fa-th"></i> 호환 모델</div>
-              <div id="modelList">
-                <!-- JS로 동적 생성 -->
-              </div>
-            </div>
-
-            <!-- 특이사항 -->
-            <div class="result-section" id="specialSection" style="display:none;">
-              <div class="section-title"><i class="fas fa-exclamation-triangle"></i> 특이사항</div>
-              <div id="specialList">
-                <!-- JS로 동적 생성 -->
-              </div>
-            </div>
-
-            <!-- 설치 방법 -->
+            <!-- 1. 설치 방법 안내 -->
             <div class="result-section">
               <div class="section-title"><i class="fas fa-wrench"></i> 설치 방법 안내</div>
-              <div id="installGuide">
-                <!-- JS로 동적 생성 -->
-              </div>
+              <div id="installGuide"></div>
             </div>
 
-            <!-- 버튼 -->
-            <div class="btn-nav btn-nav-result">
-              <button class="btn-secondary" onclick="App.restart()">
+            <!-- 2. 필요 키트/제품 -->
+            <div class="result-section" id="kitSection">
+              <div class="section-title"><i class="fas fa-box-open"></i> 필요 제품 및 키트</div>
+              <div id="kitList"></div>
+            </div>
+
+            <!-- 3. 우리집 창문정보 (구 입력 정보 요약) -->
+            <div class="result-section">
+              <div class="section-title"><i class="fas fa-home"></i> 우리집 창문정보</div>
+              <div class="summary-list" id="summaryList"></div>
+            </div>
+
+            <!-- 4. 설치 조건 체크 -->
+            <div class="result-section">
+              <div class="section-title"><i class="fas fa-tasks"></i> 설치 조건 확인</div>
+              <div class="check-list" id="checkList"></div>
+            </div>
+
+            <!-- 5. 호환 모델 -->
+            <div class="result-section" id="modelSection">
+              <div class="section-title"><i class="fas fa-th"></i> 호환 모델</div>
+              <div id="modelList"></div>
+            </div>
+
+            <!-- 특이사항 (조건부 노출 — 위치 유지) -->
+            <div class="result-section" id="specialSection" style="display:none;">
+              <div class="section-title"><i class="fas fa-exclamation-triangle"></i> 특이사항</div>
+              <div id="specialList"></div>
+            </div>
+
+            <!-- 카카오톡 상담 버튼 -->
+            <div class="kakao-consult-section">
+              <p class="kakao-consult-desc">특이한 창문이거나 설치 조건이 고민되시나요?<br>설치하실 곳의 사진을 찍어서 카카오톡으로 문의해 주세요!<br><strong>전문가가 직접 안내해 드립니다. ✨</strong></p>
+              <a href="http://pf.kakao.com/_Ixdxcxob/chat" target="_blank" rel="noopener noreferrer" class="btn-kakao">
+                <i class="fas fa-comment"></i> 💬 카카오톡 설치 상담 연결하기
+              </a>
+            </div>
+
+            <!-- 구매 버튼 -->
+            <div class="purchase-section">
+              <a href="https://paseco.co.kr/goods/goods_list.php?cateCd=012002" target="_blank" rel="noopener noreferrer" class="btn-purchase">
+                <i class="fas fa-shopping-cart"></i> 🛒 제품 및 추가거치대 구매하기
+              </a>
+            </div>
+
+            <!-- ★ 유튜브 설치 가이드 섹션 ★ -->
+            <div class="result-section youtube-section" id="youtubeSection">
+              <div class="section-title youtube-title">
+                <i class="fab fa-youtube" style="color:#FF0000;"></i>
+                나에게 필요한 설치 가이드 영상
+              </div>
+              <p class="youtube-desc">선택하신 모델과 창문 환경에 맞는 영상을 확인해 보세요.</p>
+              <div class="youtube-btn-list" id="youtubeBtnList"></div>
+            </div>
+
+            <!-- 처음부터 다시 + 고객센터 -->
+            <div class="result-bottom-bar">
+              <button class="btn-restart-full" onclick="App.restart()">
                 <i class="fas fa-redo"></i> 처음부터 다시
               </button>
-              <button class="btn-primary" onclick="App.printResult()">
-                <i class="fas fa-share-alt"></i> 결과 공유
-              </button>
             </div>
 
+            <!-- 고객센터 -->
             <div class="contact-info">
               <i class="fas fa-headset"></i>
               <div>
@@ -511,8 +540,6 @@
         </div>
 
       </main>
-
-      <!-- 하단 안전 여백 (iOS 노치 대응) -->
       <div class="safe-area-bottom"></div>
     </div>
   </div>
