@@ -92,13 +92,28 @@ input {
 
 .app-container {
   width: 100%;
-  max-width: 480px;
+  max-width: 100%;        /* 가로 회전 시 전체 너비 사용 */
   min-height: 100vh;
   background: var(--white);
   display: flex;
   flex-direction: column;
   position: relative;
   box-shadow: 0 0 40px rgba(26,110,230,0.1);
+}
+
+/* 태블릿/가로 모드: 콘텐츠 중앙 정렬, 적절한 최대 너비 */
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  /* 스마트폰 가로 회전 시 스크롤 가능하도록 min-height 해제 */
+  .app-container {
+    min-height: unset;
+  }
 }
 
 /* ---------- 헤더 ---------- */
@@ -1531,10 +1546,11 @@ input {
   }
 }
 
-@media (min-width: 481px) {
+@media (min-width: 481px) and (max-width: 767px) {
   .app-container {
     border-radius: 24px;
     margin: 20px auto;
+    max-width: 480px;
     min-height: calc(100vh - 40px);
   }
 }
